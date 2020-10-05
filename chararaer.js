@@ -14,9 +14,8 @@ class Character {
     }
 
     attack(otherCharacter) {
-        this.defending = false
-        let damage = Math.max(0, this.atk + this.weapon.atk - otherCharacter.def)
-        damage = otherCharacter.defending ? damage / 2 : damage;
+        this.defending = false;
+        this.getPhysDamage();
         otherCharacter.hp -= damage;
     }
 
@@ -35,6 +34,21 @@ class Character {
         this.defending = false
     }
 
+    getPhysDamage(){
+        let damage = Math.max(0, this.atk + this.weapon.atk - otherCharacter.def)
+        damage = otherCharacter.defending ? damage / 2 : damage;
+        return damage
+    }
+
+    getMagicDamage(){
+        let damage = Math.max(0, this.magicAtk + this.weapon.magicAtk - otherCharacter.res)
+        damage = otherCharacter.defending ? damage / 2 : damage;
+        return damage
+    }
+
+    createDOM(){
+        
+    }
 
 }
 
@@ -45,7 +59,7 @@ class Warrior extends Character {
 
     powerAttack() {
 
-        let random = Math.random()
+        let random = Math.floor(Math.random() * Math.floor(2))
         this.atk = random == 1 ? this.atk * this.powerMultiplicator : this.atk
     }
 }
@@ -54,8 +68,13 @@ class Mage extends Character {
     constructor(accuracy) {
         this.accuracy = accuracy
     }
-    MagicAttack() {
 
+    MagicAttack() {
+        this.defending = false;
+        let rand = Math.floor(Math.random() * Math.floor(100)-this.accuracy)
+        this.getMagicDamage();
+        otherCharacter.hp -= damage;
     }
 
 }
+
