@@ -47,9 +47,12 @@ class Character {
     }
 
     createDOM(){
-        
+            cre
     }
 
+    refreshDOM(){
+
+    }
 }
 
 class Warrior extends Character {
