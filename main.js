@@ -47,7 +47,7 @@ class Character {
     }
 
     createDOM(){
-            cre
+            document.createDocumentFragment
     }
 
     refreshDOM(){
